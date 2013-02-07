@@ -3,10 +3,10 @@
         simple example build file
     </description>
 	<!-- set global properties for this build -->
-	<property name="src" location="src"/>
-	<property name="build" location="build"/>
-	<property name="dist"  location="dist"/>
-	<property name="reports" location="reports"/>
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="reports" location="reports" />
 
 	<path id="base.path">
 		<pathelement path="${classpath}" />
@@ -15,49 +15,48 @@
 
 	<target name="init">
 		<!-- Create the time stamp -->
-		<tstamp/>
+		<tstamp />
 		<!-- Create the build directory structure used by compile -->
-		<mkdir dir="${build}"/>
+		<mkdir dir="${build}" />
 	</target>
 
-	<junit printsummary="yes" haltonfailure="yes">
-		<classpath>
-			<pathelement path="${classpath}"/>
-			<pathelement location="${build}"/>
-			<pathelement location="/usr/share/java/junit.jar" />
-		</classpath>
-
-		<formatter type="xml"/>
-
-		<batchtest fork="yes" todir="${reports}">
-			<fileset dir="${src}">
-				<include name="**/*Test*.java"/>
-				<exclude name="**/*AllTests.java"/>
-			</fileset>
-		</batchtest>
-	</junit>
-
-	<target name="compile" depends="init"
-        description="compile the source " >
+	<target name="compile" depends="init" description="compile the source ">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac includeantruntime="false" srcdir="${src}" destdir="${build}">
 			<classpath refid="base.path" />
 		</javac>
 	</target>
 
-	<target name="dist" depends="compile"
-        description="generate the distribution" >
-		<!-- Create the distribution directory -->
-		<mkdir dir="${dist}/lib"/>
+	<target name="compile-test" depends="compile">
+		<junit printsummary="yes" haltonfailure="yes" showoutput="true">
+			<classpath>
+				<pathelement path="${classpath}" />
+				<pathelement location="${build}" />
+				<pathelement location="/usr/share/java/junit.jar" />
+			</classpath>
 
-		<!-- Put everything in ${build} into the JenkinsTest-${DSTAMP}.jar file -->
-		<jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/>
+			<formatter type="xml" />
+
+			<batchtest fork="yes" todir="${reports}">
+				<fileset dir="${src}">
+					<include name="**/*Test*.java" />
+					<exclude name="**/*AllTests.java" />
+				</fileset>
+			</batchtest>
+		</junit>
 	</target>
 
-	<target name="clean"
-        description="clean up" >
+	<target name="dist" depends="compile-test" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}/lib" />
+
+		<!-- Put everything in ${build} into the DemoProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/lib/DemoProject-${DSTAMP}.jar" basedir="${build}" />
+	</target>
+
+	<target name="clean" description="clean up">
 		<!-- Delete the ${build} and ${dist} directory trees -->
-		<delete dir="${build}"/>
-		<delete dir="${dist}"/>
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
 	</target>
 </project>
