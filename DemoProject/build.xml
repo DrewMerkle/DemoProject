@@ -19,13 +19,7 @@
 	<!-- top level targets -->
 
 	<target name="compile" depends="init" description="compile the source code ">
-		<javac srcdir="${src}" destdir="${build}" includeantruntime="false">
-			<classpath>
-				<fileset dir="/usr/share/java/">
-					<include name="*.jar" />
-				</fileset>
-			</classpath>
-		</javac>
+		<javac srcdir="${src}" destdir="${build}" includeantruntime="false" classpath="/usr/share/java/junit.jar" />
 	</target>
 
 	<target name="dist" depends="compile" description="generate the distributable files ">
