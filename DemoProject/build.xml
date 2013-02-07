@@ -24,8 +24,8 @@
 				<fileset dir="lib">
 					<include name="**/*.jar" />
 				</fileset>
-				<fileset dir="/usr/share/java/junit-4.8.2/">
-					<include name="junit.jar" />
+				<fileset dir="/usr/share/java/">
+					<include name="junit4.jar" />
 				</fileset>
 			</classpath>
 		</javac>
