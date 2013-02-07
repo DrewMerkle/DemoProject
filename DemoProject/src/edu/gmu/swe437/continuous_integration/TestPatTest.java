@@ -67,6 +67,7 @@ public class TestPatTest {
 	 * Test method for {@link edu.gmu.swe437.continuous_integration.TestPat#pat(char[], char[])}.
 	 * 
 	 * Check that scan for 'Apples' in 'Oranges' returns -1 as expected
+	 * Oranges is 7 characters, Apples is 6 characters
 	 */
 	@Test
 	public void testPatOrangesApples() {
@@ -79,12 +80,40 @@ public class TestPatTest {
 	/**
 	 * Test method for {@link edu.gmu.swe437.continuous_integration.TestPat#pat(char[], char[])}.
 	 * 
+	 * Check that scan for 'Oranges' in 'Apples' returns -1 as expected
+	 * Oranges is 7 characters, Apples is 6 characters
+	 */
+	@Test
+	public void testPatApplesOranges() {
+		String applesString = new String("Apples");
+		String orangesString = new String("Oranges");
+
+		assertTrue( theTestPatObj.pat( applesString.toCharArray(), orangesString.toCharArray() ) == -1 ); 
+	}
+
+	/**
+	 * Test method for {@link edu.gmu.swe437.continuous_integration.TestPat#pat(char[], char[])}.
+	 * 
 	 * Check that scan for 'miss' in "Mississippi' returns -1 as expected
 	 */
 	@Test
 	public void testPatMississippi() {
 		String MississippiString = new String("Mississippi");
 		String missString = new String("miss");
+		
+		assertTrue( theTestPatObj.pat( MississippiString.toCharArray(), missString.toCharArray() ) == -1 ); 
+	}
+
+	/**
+	 * Test method for {@link edu.gmu.swe437.continuous_integration.TestPat#pat(char[], char[])}.
+	 * 
+	 * Check that scan for 'Miss' in "Mississippi' returns -1 as NOT expected
+	 * This is simply an example to force one failure for test report
+	 */
+	@Test
+	public void testIntentionalFail() {
+		String MississippiString = new String("Mississippi");
+		String missString = new String("Miss");
 		
 		assertTrue( theTestPatObj.pat( MississippiString.toCharArray(), missString.toCharArray() ) == -1 ); 
 	}
