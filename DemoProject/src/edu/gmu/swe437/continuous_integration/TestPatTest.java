@@ -107,6 +107,20 @@ public class TestPatTest {
 	/**
 	 * Test method for {@link edu.gmu.swe437.continuous_integration.TestPat#pat(char[], char[])}.
 	 * 
+	 * Check that scan for 'sippi' in "Mississippi' returns 6 as expected
+	 * This is simply an example to force one failure for test report
+	 */
+	@Test
+	public void testPatSippi() {
+		String MississippiString = new String("Mississippi");
+		String sippiString = new String("sippi");
+		
+		assertTrue( theTestPatObj.pat( MississippiString.toCharArray(), sippiString.toCharArray() ) == 6 ); 
+	}
+
+	/**
+	 * Test method for {@link edu.gmu.swe437.continuous_integration.TestPat#pat(char[], char[])}.
+	 * 
 	 * Check that scan for 'Miss' in "Mississippi' returns -1 as NOT expected
 	 * This is simply an example to force one failure for test report
 	 */
