@@ -1,4 +1,0 @@
-Testsuite: edu.gmu.swe437.continuous_integration.DemoClassTest
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.018 sec
-
-Testcase: test took 0.002 sec
