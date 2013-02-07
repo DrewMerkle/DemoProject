@@ -41,9 +41,12 @@ class TestPat {
 
 	/**
 	 * pat method returns position of first character of pattern within subject
+	 * if pattern is not a substring of subject, return -1
+	 * else return the zero-based index where first character of pattern occurs
+	 * within subject
 	 * 
-	 * @param subject a String
-	 * @param pattern a String
+	 * @param subject a char[]
+	 * @param pattern a char[]
 	 * @return int representing first character position of pattern within subject
 	 */
 	public int pat(char[] subject, char[] pattern) {

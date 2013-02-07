@@ -58,6 +58,7 @@
 				<formatter type="xml" />
 				<fileset dir="${src}">
 					<include name="**/*Test*.java" />
+					<exclude name="**/TestPat.java" />
 				</fileset>
 			</batchtest>
 		</junit>
