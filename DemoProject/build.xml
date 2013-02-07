@@ -10,6 +10,8 @@
 
 	<path id="base.path">
 		<pathelement path="${classpath}" />
+		<pathelement path="${src}" />
+		<pathelement path="${build}" />
 		<pathelement location="/usr/share/java/junit.jar" />
 	</path>
 
@@ -23,11 +25,7 @@
 	<target name="compile" depends="init" description="compile the source">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac includeantruntime="false" srcdir="${src}" destdir="${build}">
-			<classpath>
-				<pathelement path="${classpath}" />
-				<pathelement location="${build}" />
-				<pathelement location="/usr/share/java/junit.jar" />
-			</classpath>
+			<classpath refid="base.path" />
 		</javac>
 	</target>
 
@@ -35,11 +33,7 @@
 		<!-- Test the java code using JUnit -->
 		<mkdir dir="reports" />
 		<junit fork="no" printsummary="yes" haltonfailure="yes" showoutput="true">
-			<classpath>
-				<pathelement path="${classpath}" />
-				<pathelement location="${build}" />
-				<pathelement location="/usr/share/java/junit.jar" />
-			</classpath>
+			<classpath refid="base.path" />
 			<formatter type="xml" />
 			<batchtest fork="yes" todir="${reports}">
 				<fileset dir="${src}">
