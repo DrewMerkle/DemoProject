@@ -23,7 +23,11 @@
 	<target name="compile" depends="init" description="compile the source ">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac includeantruntime="false" srcdir="${src}" destdir="${build}">
-			<classpath refid="base.path" />
+			<classpath>
+				<pathelement path="${classpath}" />
+				<pathelement location="${build}" />
+				<pathelement location="/usr/share/java/junit.jar" />
+			</classpath>
 		</javac>
 	</target>
 
